@@ -49,9 +49,9 @@ var totalQuestions	= 0;
 
 
 
-// FUNCTIONS
+// **********FUNCTIONS**********
 
-//Timer functions
+//------------Timer functions//------------
     function run() {
       intervalId = setInterval(decrement, 1000);
     }
@@ -62,6 +62,7 @@ var totalQuestions	= 0;
       $(".countdown").html("<h2>" + currentTime + "</h2>");
       if (countdown === 0) {
         stop();
+        $(".countdown").empty();
         $(".answers").html("<h2>Time's up! Better get faster on the next one!</h2>");   
         unanswered++;   
 		setTimeout(clear, 5000);
@@ -116,7 +117,6 @@ var totalQuestions	= 0;
 	function chooseAnAnswer () {
 		if (x < questionObject.length) {
 			for (var i = 0; i < questionObject[x].answers.length; i++) {
-				console.log(questionObject[x].answers.length);
 				$(".answers").append("<h4>" + questionObject[x].answers[i] + "</h4><br>");
 			}
 		}
