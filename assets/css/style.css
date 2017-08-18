@@ -48,5 +48,10 @@ body {
 .startBTN {
 	font-size: 24px;
 	padding: 15px 32px;
+}
 
+.resetBTN {
+	font-size: 24px;
+	padding: 15px 32px;
+	visibility: none;
 }
