@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-//GLOBAL VARIABLES
+//************GLOBAL VARIABLES************
 //Questions
 var x 	= 0;
 var questionObject 	= [
@@ -49,7 +49,7 @@ var totalQuestions	= 0;
 
 
 
-// FUNCTIONS
+// ************FUNCTIONS************
 
 //Timer functions
     function run() {
@@ -116,7 +116,6 @@ var totalQuestions	= 0;
 	function chooseAnAnswer () {
 		if (x < questionObject.length) {
 			for (var i = 0; i < questionObject[x].answers.length; i++) {
-				console.log(questionObject[x].answers.length);
 				$(".answers").append("<h4>" + questionObject[x].answers[i] + "</h4><br>");
 			}
 		}
@@ -166,7 +165,7 @@ var totalQuestions	= 0;
 
 
 
-// MAIN PROCESS
+// ************MAIN PROCESS************
 
 //Click the Start button
 	$(".startBTN").on("click", function() {
