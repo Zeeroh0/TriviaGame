@@ -51,7 +51,7 @@ var totalQuestions	= 0;
 
 // ************FUNCTIONS************
 
-//Timer functions
+//----------Timer functions----------
     function run() {
       intervalId = setInterval(decrement, 1000);
     }
@@ -147,11 +147,20 @@ var totalQuestions	= 0;
 		$(".countdown").empty();	
 		$(".answers").empty();
 		$(".question").empty();
+		if (correct === 10) {
+			$(".playerStats").append('<h2>Oh my goodness!</h2>');
+			$(".playerStats").append('<h2>You ACED this!!!</h2>');
+			$(".playerStats").append('<h2>Truly you are a <b>genius</b>!</h2>');
+			$(".playerStats").append('<h2>You are a meteorologist amongst men!!</h2>');
+		} else {
 		$(".playerStats").append("<h2>All done, here's how you did.</h2>");
 		$(".playerStats").append("<h3>Correct Answers: " + correct + "</h3>");
 		$(".playerStats").append("<h3>Incorrect Answers: " + wrong + "</h3>");
 		$(".playerStats").append("<h3>Unanswered: " + unanswered + "</h3>");
 		$(".playerStats").append('<h2>Click to start again!</h2>');
+		//Click on the playerStats div to start over
+		$(".playerStats").click(startOver);
+		}
 	}
 
 
@@ -205,9 +214,6 @@ var totalQuestions	= 0;
 				setTimeout(clear, 2000);
 			}
 	});
-
-//Click on the playerStats div to start over
-	$(".playerStats").click(startOver);
 
 });
 
