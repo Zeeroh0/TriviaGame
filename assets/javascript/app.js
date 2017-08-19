@@ -1,15 +1,5 @@
 $(document).ready(function() {
 
-
-	//if you make your choices its own array, 
-
-
-	[
-	question,
-	[choice1, choice2, etc],
-	answer:
-	]
-
 //GLOBAL VARIABLES
 //Questions
 var questionObject = {
