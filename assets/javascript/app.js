@@ -148,6 +148,8 @@ var totalQuestions	= 0;
 		$(".answers").empty();
 		$(".question").empty();
 		if (correct === 10) {
+			$(".playerStats").append("<h2>All done, here's how you did.</h2>");
+			$(".playerStats").append("<h3>Correct Answers: " + correct + "</h3>");
 			$(".playerStats").append('<h2>Oh my goodness!</h2>');
 			$(".playerStats").append('<h2>You ACED this!!!</h2>');
 			$(".playerStats").append('<h2>Truly you are a <b>genius</b>!</h2>');
