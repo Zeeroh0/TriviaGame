@@ -46,6 +46,21 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+
+
+
+.answerChoices {
+	background: #0A324C;
+	font-size: 18px;
+	padding: 10px 24px;
+	margin: 5px;
+	min-width: 200px;
+}
+
+
+
+
+
 .subBox {
 	text-align: center;
 	background: #15436B;
@@ -54,6 +69,7 @@ body {
 .startBTN {
 	font-size: 24px;
 	padding: 15px 32px;
+
 }
 
 .resetBTN {

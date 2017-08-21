@@ -38,7 +38,7 @@ var questionObject 	= [
 
 //Timer variables
 var intervalId;
-var countdown		= 15;
+var countdown		= 16;
 
 //Player Stats
 var correct 		= 0;
@@ -64,7 +64,7 @@ var totalQuestions	= 0;
         stop();
         $(".answers").html("<h2>Time's up! Better get faster on the next one!</h2>");   
         unanswered++;   
-		setTimeout(clear, 5000);
+		setTimeout(clear, 2000);
       }
     }
 
@@ -97,7 +97,7 @@ var totalQuestions	= 0;
 		unanswered 		= 0;
 		totalQuestions	= 0;
 		x				= 0;
-		countdown		= 15;
+		countdown		= 16;
 		//hide start button
 		$(".startBox").hide();
 		//reset and show timer
@@ -116,7 +116,8 @@ var totalQuestions	= 0;
 	function chooseAnAnswer () {
 		if (x < questionObject.length) {
 			for (var i = 0; i < questionObject[x].answers.length; i++) {
-				$(".answers").append("<h4>" + questionObject[x].answers[i] + "</h4><br>");
+				// var b = $("button");
+				$(".answers").append("<button class = 'answerChoices'>" + questionObject[x].answers[i] + "</button><br>");
 			}
 		}
 	}
@@ -132,7 +133,7 @@ var totalQuestions	= 0;
 		} 
 		//otherwise, reset the clock and let's keep going!
 		else {
-			countdown 		= 15;
+			countdown 		= 16;
 			$(".answers").empty();
 			nextQuestion();
 			chooseAnAnswer();
@@ -190,7 +191,7 @@ var totalQuestions	= 0;
 
 
 //What happens when the user selects an answer (H4 elements in the Answers Class area)
-	$(".answers").on("click", "h4", function() {
+	$(".answers").on("click", ".answerChoices", function() {
 			//define correct guess from our main object
 			var correctanswer = questionObject[x].correct;
 			//define user's selected guess where this = element that was clicked
