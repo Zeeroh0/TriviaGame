@@ -6,34 +6,44 @@ var x 	= 0;
 var questionObject 	= [
 		{	question: "Which is safest during a tornado?",
 			answers: ["Inside a car", "Under an overpass", "In a ditch", "Under a tree"],
-			correct: "In a ditch"},
+			correct: "In a ditch",
+			gif: "assets/images/gifs/ditch.gif"},
 		{	question: "Which kills more people every year?", 
 			answers: ["Lightning", "Floods", "Tornadoes", "Hurricanes",],
-			correct: "Floods"},
+			correct: "Floods",
+			gif: "assets/images/gifs/flood.gif"},
 		{	question: "Which type of cloud is highest in the atmosphere?",
 			answers: ["Cirrus", "Altostratus", "Cumulus",  "Nimbostratus",],
-			correct: "Cirrus"},
+			correct: "Cirrus",
+			gif: "assets/images/gifs/cirrus.gif"},
 		{	question: "Which type of cloud is most likely to produce rain?",
 			answers: ["Cirrus", "Altocumulus", "Cirrostratus", "Cumulus"],
-			correct: "Cumulus"},	
+			correct: "Cumulus",
+			gif: "assets/images/gifs/cumulus.gif"},	
 		{	question: "Which type of cloud produces lightning?", 
 			answers: ["Altostratus", "Cumulonimbus", "Cirrocumulus", "Nimbus"],
-			correct: "Cumulonimbus"},	
+			correct: "Cumulonimbus",
+			gif: "assets/images/gifs/cumulonimbus.gif"},	
 		{	question: "Which time of day is the best for tornado development?", 
 			answers: ["6:00am - 10:00am", "8:00pm - midnight", "3:00pm - 6:00pm", "Noon - 4:00pm"],
-			correct: "3:00pm - 6:00pm"},	
+			correct: "3:00pm - 6:00pm",
+			gif: "assets/images/gifs/tornado.gif"},	
 		{	question: "True or false: Tornadoes do not form in temperatures lower than 50 degrees Fahrenheit.",
 			answers: ["True", "False"],
-			correct: "False"},	
+			correct: "False",
+			gif: "assets/images/gifs/coldTornado.gif"},	
 		{	question: "True or false: A tornado that forms over water is called a Waterdevil.",
 			answers: ["True", "False"],
-			correct: "False"},	
+			correct: "False",
+			gif: "assets/images/gifs/waterSpout.gif"},	
 		{	question: "True or false: Cold air is heavier than warm air.",
 			answers: ["True", "False"],
-			correct: "True"},
+			correct: "True",
+			gif: "assets/images/gifs/coldAir.gif"},
 		{	question: "For golf-ball sized hail, a storms updraft must be:",
 			answers: ["70 mph", "20 mph", "50 mph", "Does not need an updraft."],
-			correct: "70 mph"},
+			correct: "70 mph",
+			gif: "assets/images/gifs/hail.gif"},
 ];
 
 //Timer variables
@@ -63,6 +73,7 @@ var totalQuestions	= 0;
       if (countdown === 0) {
         stop();
         $(".answers").html("<h2>Time's up! Better get faster on the next one!</h2>");   
+       	$(".answers").append('<img src="assets/images/gifs/outOfTime.gif" alt="Out of Time" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
         unanswered++;   
 		setTimeout(clear, 2000);
       }
@@ -148,21 +159,30 @@ var totalQuestions	= 0;
 		$(".countdown").empty();	
 		$(".answers").empty();
 		$(".question").empty();
-		if (correct === 10) {
-			$(".playerStats").append("<h2>All done, here's how you did.</h2>");
-			$(".playerStats").append("<h3>Correct Answers: " + correct + "</h3>");
-			$(".playerStats").append('<h2>Oh my goodness!</h2>');
-			$(".playerStats").append('<h2>You ACED this!!!</h2>');
-			$(".playerStats").append('<h2>Truly you are a <b>genius</b>!</h2>');
-			$(".playerStats").append('<h2>You are a meteorologist amongst men!!</h2>');
-		} else {
 		$(".playerStats").append("<h2>All done, here's how you did.</h2>");
 		$(".playerStats").append("<h3>Correct Answers: " + correct + "</h3>");
-		$(".playerStats").append("<h3>Incorrect Answers: " + wrong + "</h3>");
-		$(".playerStats").append("<h3>Unanswered: " + unanswered + "</h3>");
-		$(".playerStats").append('<h2>Click to start again!</h2>');
-		//Click on the playerStats div to start over
-		$(".playerStats").click(startOver);
+		if (correct === 10) {
+			$(".playerStats").append('<h2>Oh my goodness!</h2>');
+			$(".playerStats").append('<h2>You ACED this!!!</h2>');
+			$(".playerStats").append('<h2>I...I have nothing left to teach you. Well done.</h2>');
+        	$(".answers").append('<img src="assets/images/gifs/perfect10.gif" alt="A Perfect Score!" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
+		} else {
+			$(".playerStats").append("<h3>Incorrect Answers: " + wrong + "</h3>");
+			$(".playerStats").append("<h3>Unanswered: " + unanswered + "</h3>");
+			$(".playerStats").click(startOver);
+			if (correct <= 4) {
+	        	$(".playerStats").append('<img src="assets/images/gifs/under4.gif" alt="Bad Meteorologist" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
+	        	$(".playerStats").append("<h3>...you might want to practice more.</h3>");
+				$(".playerStats").append('<h4>Click to start again!</h4>');
+			} else if (correct > 4 && correct <= 7) {
+	        	$(".playerStats").append('<img src="assets/images/gifs/between5to8.gif" alt="Not bad...get better though!" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
+	        	$(".playerStats").append("<h3>Not bad, but try again to do better!</h3>");
+				$(".playerStats").append('<h4>Click to start again!</h4>');
+			} else if ( correct > 7 && correct <= 9) {
+	        	$(".playerStats").append('<img src="assets/images/gifs/superWeatherMan.gif" alt="Looking good!" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
+	        	$(".playerStats").append("<h3>Hey hey! Nice job!</h3>");
+				$(".playerStats").append('<h4>Click to start again!</h4>');
+			}
 		}
 	}
 
@@ -196,14 +216,16 @@ var totalQuestions	= 0;
 			var correctanswer = questionObject[x].correct;
 			//define user's selected guess where this = element that was clicked
 			var userguess = ($(this).text());
+			//Overwrite the answers html and display the relavent gif from the answerObject array
+			$(".answers").html('<img src="' + questionObject[x].gif + '" alt="' + questionObject[x].correct + '" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
 			//stop and clear the countdown
 			stop();
 			$(".countdown").empty();
+
 			//If they guess correctly
 			if (correctanswer === userguess) {
 				correct++;
-				$(".question").html("<h2>You got it! The right answer was " + questionObject[x].correct + ".</h2>");
-				$(".answers").empty();
+				$(".question").html('<h2>You got it! The right answer was:</h2><br><h2><i>' + questionObject[x].correct + '.</i></h2><br>');;
 				//only have this screen show for 5 seconds, then proceed clear, increase 
 				//x in our main array to select next question and answers, and 
 				//reset the countdown			
@@ -212,8 +234,7 @@ var totalQuestions	= 0;
 			//any other guesses (wrong)
 			else {
 				wrong++;
-				$(".question").html("<h2>Not quite. The right answer was " + questionObject[x].correct + ".</h2>");
-				$(".answers").empty();
+				$(".question").html("<h2>Not quite. The right answer was:</h2><br><h2><i>" + questionObject[x].correct + ".</i></h2><br>");;
 				setTimeout(clear, 2000);
 			}
 	});

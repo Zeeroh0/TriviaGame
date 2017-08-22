@@ -8,10 +8,11 @@ https://coolors.co/4e7781-0a324c-a7aba1-15436b-c5c0a9*/
 
 
 body {
-	max-width: 1440px;
+	max-width: 100%;
+	height: 100%;
 	background: #4E7781;	
 	background-image: url("../images/Snapseed.jpg");
-	background-size: 1440px;
+	background-size: cover;
 	color: #C5C0A9;
 	/*font-family: 'Raleway', sans-serif;
 	font-family: 'Lora', serif;
@@ -23,8 +24,8 @@ body {
 	margin: auto;
 	margin-top: 100px;
 	padding: auto;
-	min-height: 700px;
-	max-width: 70%;
+	min-height: 400px;
+	max-width: 60%;
 	background: #15436B;
 	border: 2px solid black;
 	border-radius: 10px;
@@ -57,6 +58,11 @@ body {
 	min-width: 200px;
 }
 
+button.answerChoices:hover {
+	background-color: #009933;
+	color: black;
+	font-weight: bold;
+}
 
 
 
