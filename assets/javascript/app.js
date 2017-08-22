@@ -229,13 +229,13 @@ var totalQuestions	= 0;
 				//only have this screen show for 5 seconds, then proceed clear, increase 
 				//x in our main array to select next question and answers, and 
 				//reset the countdown			
-				setTimeout(clear, 2000);
+				setTimeout(clear, 4000);
 			} 
 			//any other guesses (wrong)
 			else {
 				wrong++;
 				$(".question").html("<h2>Not quite. The right answer was:</h2><br><h2><i>" + questionObject[x].correct + ".</i></h2><br>");;
-				setTimeout(clear, 2000);
+				setTimeout(clear, 4000);
 			}
 	});
 
