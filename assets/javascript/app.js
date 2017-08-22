@@ -223,26 +223,26 @@ var totalQuestions	= 0;
 			$(".countdown").empty();
 			//clear the answers div
 			$(".answers").empty();
+			//create continue button
+			$(".question").html('<button type="button" class="btn btn-primary continueBTN">Continue</button>');
+			//onclick event in lieu of a setTimeout to move forward 
+			$(".continueBTN").on("click", function () {
+				clear();
+			})
 
 			//If they guess correctly
 			if (correctanswer === userguess) {
 				correct++;
-				$(".question").html('<h2>You got it! The right answer was:</h2><br><h2><i>' + questionObject[x].correct + '.</i></h2><br>');
+				$(".question").prepend('<h2>You got it! The right answer was:</h2><br><h2><i>' + questionObject[x].correct + '.</i></h2><br>');
 				//Overwrite the answers html and display the relavent gif from the answerObject array
-				$(".question").append('<img src="' + questionObject[x].gif + '" alt="' + questionObject[x].correct + '" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
-				// //onclick event in lieu of a setTimeout to move forward 
-				// $(".playerStats").html("<h2>Click <b><style = 'color: red;'>HERE</style></b>to continue</h2>");
-				// $(".playerStats").on("click", function () {
-				// 	clear();
-				// })
-				//only have this screen show for 7 seconds, then proceed to use the clear function 
-				setTimeout(clear, 7000);
+				$(".question").prepend('<img src="' + questionObject[x].gif + '" alt="' + questionObject[x].correct + '" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
 			} 
 			//any other guesses (wrong)
 			else {
 				wrong++;
-				$(".question").html("<h2>Not quite. The right answer was:</h2><br><h2><i>" + questionObject[x].correct + ".</i></h2><br>");
-				setTimeout(clear, 7000);
+				$(".question").prepend("<h2>Not quite. The right answer was:</h2><br><h2><i>" + questionObject[x].correct + ".</i></h2><br>");
+				$(".question").prepend('<img src="' + questionObject[x].gif + '" alt="' + questionObject[x].correct + '" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
+
 			}
 	});
 
