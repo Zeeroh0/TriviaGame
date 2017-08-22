@@ -75,7 +75,7 @@ var totalQuestions	= 0;
         $(".answers").html("<h2>Time's up! Better get faster on the next one!</h2>");   
        	$(".answers").append('<img src="assets/images/gifs/outOfTime.gif" alt="Out of Time" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
         unanswered++;   
-		setTimeout(clear, 2000);
+		setTimeout(clear, 5000);
       }
     }
 
@@ -134,6 +134,8 @@ var totalQuestions	= 0;
 	}
 
 //function for actions after user has made their answer selection
+//x in our main array to select next question and answers, and 
+//reset the countdown
 	function clear () {
 		//go to the next array index
 		x++;
@@ -216,26 +218,31 @@ var totalQuestions	= 0;
 			var correctanswer = questionObject[x].correct;
 			//define user's selected guess where this = element that was clicked
 			var userguess = ($(this).text());
-			//Overwrite the answers html and display the relavent gif from the answerObject array
-			$(".answers").html('<img src="' + questionObject[x].gif + '" alt="' + questionObject[x].correct + '" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
 			//stop and clear the countdown
 			stop();
 			$(".countdown").empty();
+			//clear the answers div
+			$(".answers").empty();
 
 			//If they guess correctly
 			if (correctanswer === userguess) {
 				correct++;
-				$(".question").html('<h2>You got it! The right answer was:</h2><br><h2><i>' + questionObject[x].correct + '.</i></h2><br>');;
-				//only have this screen show for 5 seconds, then proceed clear, increase 
-				//x in our main array to select next question and answers, and 
-				//reset the countdown			
-				setTimeout(clear, 4000);
+				$(".question").html('<h2>You got it! The right answer was:</h2><br><h2><i>' + questionObject[x].correct + '.</i></h2><br>');
+				//Overwrite the answers html and display the relavent gif from the answerObject array
+				$(".question").append('<img src="' + questionObject[x].gif + '" alt="' + questionObject[x].correct + '" style="width:375px; margin-bottom: 15px; border: 1px solid black;">');
+				// //onclick event in lieu of a setTimeout to move forward 
+				// $(".playerStats").html("<h2>Click <b><style = 'color: red;'>HERE</style></b>to continue</h2>");
+				// $(".playerStats").on("click", function () {
+				// 	clear();
+				// })
+				//only have this screen show for 7 seconds, then proceed to use the clear function 
+				setTimeout(clear, 7000);
 			} 
 			//any other guesses (wrong)
 			else {
 				wrong++;
-				$(".question").html("<h2>Not quite. The right answer was:</h2><br><h2><i>" + questionObject[x].correct + ".</i></h2><br>");;
-				setTimeout(clear, 4000);
+				$(".question").html("<h2>Not quite. The right answer was:</h2><br><h2><i>" + questionObject[x].correct + ".</i></h2><br>");
+				setTimeout(clear, 7000);
 			}
 	});
 
